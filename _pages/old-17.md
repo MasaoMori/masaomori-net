@@ -1,0 +1,7 @@
+---
+layout: "redirect"
+title: "平成27年度 第1回 情報活用IR研究会＠東京工業大学"
+permalink: "/テスト/"
+redirect_to: "/27-1st-irds-seminar/"
+searchable: false
+---

@@ -1,0 +1,7 @@
+---
+layout: "redirect"
+title: "aa"
+permalink: "/aa/"
+redirect_to: "/wp-content/uploads/2015/05/aa.jpg"
+searchable: false
+---

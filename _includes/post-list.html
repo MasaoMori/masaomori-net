@@ -1,0 +1,23 @@
+{% assign entries = include.items | default: site.posts %}
+<div class="article-list">
+{% assign shown = 0 %}
+{% for post in entries %}
+  {% assign show_entry = true %}
+  {% if page.archive_category and post.categories contains page.archive_category %}{% elsif page.archive_category %}{% assign show_entry = false %}{% endif %}
+  {% if page.date_prefix %}
+    {% assign prefix_length = page.date_prefix.size %}
+    {% assign post_prefix = post.date | date: '%Y-%m-%d' | slice: 0, prefix_length %}
+    {% if post_prefix != page.date_prefix %}{% assign show_entry = false %}{% endif %}
+  {% endif %}
+  {% if show_entry %}
+    {% assign shown = shown | plus: 1 %}
+    <article class="article-summary">
+      <time>{{ post.date | date: '%Y-%m-%d' }}</time>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+      <p>{{ post.content | markdownify | strip_html | normalize_whitespace | truncate: 140, '…' | escape }}</p>
+      <a class="read-more" href="{{ post.url | relative_url }}">続きを読む →</a>
+    </article>
+  {% endif %}
+{% endfor %}
+{% if shown == 0 %}<p>公開記事はありません。</p>{% endif %}
+</div>

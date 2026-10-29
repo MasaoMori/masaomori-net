@@ -1,0 +1,7 @@
+---
+layout: "redirect"
+title: "header"
+permalink: "/header/"
+redirect_to: "/wp-content/uploads/2015/05/header.jpg"
+searchable: false
+---

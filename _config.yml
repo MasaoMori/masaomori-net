@@ -1,7 +1,7 @@
 title: "Data Science & Institutional Research"
 description: "大学IR実務家・研究者 森 雅生のブログ"
-url: "https://masaomori.github.io"
-baseurl: "/masaomori-net"
+url: "https://masaomori.net"
+baseurl: ""
 lang: ja
 timezone: Asia/Tokyo
 encoding: utf-8
@@ -21,3 +21,17 @@ exclude:
   - preview
 include:
   - _pages
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      lang: ja
+      searchable: true
+      content_type: post

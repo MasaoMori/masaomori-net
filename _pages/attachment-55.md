@@ -1,0 +1,7 @@
+---
+layout: "redirect"
+title: "IMG_0218"
+permalink: "/img_0218/"
+redirect_to: "/wp-content/uploads/2015/05/IMG_0218-e1432472670766.jpg"
+searchable: false
+---

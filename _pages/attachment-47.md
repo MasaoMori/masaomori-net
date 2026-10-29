@@ -1,0 +1,7 @@
+---
+layout: "redirect"
+title: "IMG_1571"
+permalink: "/img_1571/"
+redirect_to: "/wp-content/uploads/2015/05/IMG_1571-e1432471812523.jpg"
+searchable: false
+---

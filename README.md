@@ -1,8 +1,8 @@
 # masaomori.net — Jekyll migration review
 
-2022-03-25 BackWPupバックアップをもとに作成したサイトです。2026-10-29にレビュー・公開承認済み。独自ドメインとDNSは切り替えていません。
+2022-03-25 BackWPupバックアップをもとに作成したサイトです。2026-10-29にレビュー・公開承認済み。公開ドメインは `masaomori.net` です。
 
-GitHub Pages: https://masaomori.github.io/masaomori-net/
+公開サイト: https://masaomori.net/
 
 Repository: https://github.com/MasaoMori/masaomori-net
 
@@ -19,6 +19,74 @@ Repository: https://github.com/MasaoMori/masaomori-net
 - PlantUMLショートコードはソース表示。動的な図の描画は含みません。
 
 本文にある所属、料金、日時などはバックアップ時点の記載です。原SQL、wp-config.php、パスワード、会員情報、問い合わせ送信内容、制限付き資料は含みません。
+
+
+## Markdownで本文を管理する
+
+記事・固定ページ・一覧・転送ページのソースは `.md` です。公開時にはJekyllがHTMLを生成します。共通レイアウトやフォームなどの部品は `_layouts/`・`_includes/` のHTMLにまとめ、RSS・サイトマップはHTML/XMLテンプレートを使用しています。
+
+### よく編集するファイル
+
+| 内容 | ファイル |
+| --- | --- |
+| プロフィール | `_pages/cv.md` |
+| 問い合わせ案内 | `_pages/contact-me.md` |
+| ツール案内 | `_pages/tools.md` |
+| 教材の配布ページ | `_pages/大学irカリキュラム教材.md` |
+| 学生成績サンプル | `_pages/irtext-data-sample.md` |
+| 過去の記事 | `_posts/YYYY-MM-DD-記事名.md` |
+| 英語ページ | `_pages/en-ページ名.md` |
+
+先頭の `---` で囲まれた設定では、既存ページの `permalink` を維持すると元のURLを保てます。`wp_id`、`restricted` は移行時点の状態を示す記録です。`restricted` を指定しても静的サイトの本文にパスワードは掛かりません。旧保護ページの本文はこのリポジトリに含みません。
+
+### 本文の書き方
+
+````markdown
+## 見出し
+
+通常の段落です。**太字**も使えます。
+
+- 箇条書き
+- 箇条書き
+
+[プロフィール]({{ '/cv/' | relative_url }})
+
+![画像の説明]({{ '/wp-content/uploads/2017/03/71PSFYFVKtL-212x300.jpg' | relative_url }})
+
+```text
+コードや図のソース
+```
+````
+
+画像サイズなどを残す必要がある場合は、画像の後ろに `{: width="212" height="300" }` を付けられます。折りたたみ表示の `<details>` など、Markdownだけでは表せない部品は一部HTMLを併用します。
+
+### 新しい記事を追加する
+
+`_posts/2026-10-29-my-new-post.md` のような名前でファイルを作ります。先頭の日付は記事の日付に合わせます。
+
+```markdown
+---
+title: "新しい記事のタイトル"
+date: "2026-10-29 09:00:00 +0900"
+permalink: /my-new-post/
+author: "森 雅生"
+categories: ["告知"]
+---
+
+ここから本文を書きます。
+```
+
+記事の標準レイアウト・日本語・検索対象の設定は `_config.yml` に定義しています。記事一覧、既存のカテゴリ・日付別一覧、RSS、サイト内検索のデータは再公開時に本文から自動生成されるため、HTMLや `assets/search.json` を手作業で更新する必要はありません。新しいカテゴリーをサイドバーにも出したい場合は `_data/categories.json` に追加します。新しい年月日の専用一覧URLが必要な場合は `_pages/date-*.md` を参考に一覧ページを追加します。
+
+新しい固定ページは `_pages/ページ名.md` に作り、先頭に `layout: page`、`title`、`permalink`、`lang: ja`、`searchable: true` を指定します。英語ページは別ファイルなので、日本語本文の変更後は対応する英語ページも必要に応じて編集してください。
+
+### GitHubで編集して公開する
+
+1. `_posts/` または `_pages/` の `.md` を編集してコミットします。
+2. Actions → **Publish reviewed site** → **Run workflow** を実行します。
+3. 生成・検証・公開が成功したら、サイト上の表示を確認します。
+
+push時の自動公開は設定していません。`_data/content.json` は移行時点の記録で、日常の本文編集先ではありません。
 
 ## ローカルで生成・確認する
 
@@ -50,7 +118,7 @@ python3 scripts/validate.py _site /repository-name
    公開ワークフローの記録: https://github.com/MasaoMori/masaomori-net/actions/runs/40819073018
 5. 独自ドメインとDNSの切り替えは、ユーザーの承認後に別途行います。現在CNAMEファイルはありません。
 
-`_config.yml` は現在 `url: https://masaomori.github.io`、`baseurl: /masaomori-net` としています。独自ドメインへの切り替え承認後は `url: https://www.masaomori.net`、`baseurl: ""` に変更します。GitHub Pagesでのビルド・公開方法は[公式ドキュメント](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)を参照しています。
+`_config.yml` はGitHub Pagesの独自ドメイン設定に合わせて `url: https://masaomori.net`、`baseurl: ""` としています。GitHub Pagesでのビルド・公開方法は[公式ドキュメント](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)を参照しています。
 
 ## デザイン
 

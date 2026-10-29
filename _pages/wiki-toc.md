@@ -1,0 +1,19 @@
+---
+layout: "page"
+title: "TOC"
+date: "2019-11-19 10:23:29 +0900"
+last_modified_at: "2019-11-19 10:24:12 +0900"
+permalink: "/wiki/toc/"
+wp_id: 363
+author: "masa"
+excerpt: ""
+lang: "ja"
+categories: []
+english_url: "/en/wiki/toc/"
+japanese_url: "/wiki/toc/"
+restricted: false
+has_translation: false
+content_type: "yada_wiki"
+searchable: true
+---
+etsut

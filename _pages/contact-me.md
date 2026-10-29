@@ -1,0 +1,20 @@
+---
+layout: "page"
+title: "Contact me"
+date: "2015-11-01 18:06:02 +0900"
+last_modified_at: "2016-07-18 18:42:34 +0900"
+permalink: "/contact-me/"
+wp_id: 180
+author: "masa"
+excerpt: ""
+lang: "ja"
+categories: []
+english_url: "/en/contact-me/"
+japanese_url: "/contact-me/"
+restricted: false
+has_translation: true
+content_type: "page"
+searchable: true
+---
+> 旧サイトのフォームは現在ご利用いただけません。
+{: .archive-notice role="note" }

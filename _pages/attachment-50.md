@@ -1,0 +1,7 @@
+---
+layout: "redirect"
+title: "cropped-IMG_1571-e1432471812523.jpg"
+permalink: "/cropped-img_1571-e1432471812523-jpg/"
+redirect_to: "/wp-content/uploads/2015/05/cropped-IMG_1571-e1432471812523.jpg"
+searchable: false
+---

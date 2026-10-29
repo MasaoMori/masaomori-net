@@ -1,0 +1,7 @@
+---
+layout: "redirect"
+title: "71PSFYFVKtL"
+permalink: "/大学irスタンダード指標集-発刊/71psfyfvktl/"
+redirect_to: "/wp-content/uploads/2017/03/71PSFYFVKtL.jpg"
+searchable: false
+---
