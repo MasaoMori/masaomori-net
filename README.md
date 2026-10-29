@@ -40,12 +40,14 @@ bundle exec jekyll build --baseurl /repository-name
 python3 scripts/validate.py _site /repository-name
 ```
 
-## 承認後のGitHub Pages公開
+## GitHub Pagesでの公開・更新
 
 1. このフォルダーの内容だけを公開先リポジトリに配置します。元ZIP・SQLや調査用作業フォルダーをアップロードしないでください。
 2. リポジトリのSettings → Pages → SourceをGitHub Actionsに設定します。
 3. 内容確認後に `Publish reviewed site` ワークフローを手動実行します。pushによる自動公開は設定していません。
-4. GitHub側の生成・検証・公開結果と実際のURLを確認します。GitHub上の動作はまだ未検証です。
+4. GitHub側の生成・検証・公開結果と実際のURLを確認します。2026-10-29にGitHub側の生成・検証・公開が成功し、公開URLで記事・画像・検索・旧記事IDリンクの動作も確認しました。
+
+   公開ワークフローの記録: https://github.com/MasaoMori/masaomori-net/actions/runs/40819073018
 5. 独自ドメインとDNSの切り替えは、ユーザーの承認後に別途行います。現在CNAMEファイルはありません。
 
 `_config.yml` は現在 `url: https://masaomori.github.io`、`baseurl: /masaomori-net` としています。独自ドメインへの切り替え承認後は `url: https://www.masaomori.net`、`baseurl: ""` に変更します。GitHub Pagesでのビルド・公開方法は[公式ドキュメント](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)を参照しています。
