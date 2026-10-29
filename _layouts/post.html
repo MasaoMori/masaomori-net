@@ -1,0 +1,4 @@
+---
+layout: default
+---
+<article class="entry"><div class="section-kicker">{{ page.categories | join: ' / ' | escape }}</div><h1>{{ page.title | escape }}</h1><p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%m月%d日' }}</time>{% if page.author != '' %} · {{ page.author | escape }}{% endif %}</p><div class="entry-content">{{ content }}</div><p class="back-link"><a href="{{ '/archives/' | relative_url }}">← 記事一覧へ</a></p></article>
